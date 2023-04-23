@@ -1,7 +1,21 @@
-select
-    cast(order_line_id as integer) as sales_order_line_key,
-    cast(stock_item_id as integer) as product_key,
-    cast(quantity as integer) as quantity,
-    cast(unit_price as numeric) as unit_price,
-    cast(quantity as integer) * cast(unit_price as numeric) as gross_amount
-from `vit-lam-data.wide_world_importers.sales__order_lines`
+WITH fact_sales_order_line__source AS (
+    SELECT *
+    FROM `vit-lam-data.wide_world_importers.sales__order_lines`
+)
+
+, fact_sales_order_line__rename_recast AS (
+    SELECT 
+        CAST(order_line_id AS INT) AS sales_order_line_key
+        , CAST(order_id AS INT) AS sales_order_key
+        , CAST(stock_item_id AS INT) AS product_key
+        , CAST(quantity AS INT) AS quantity
+        , CAST(unit_price AS NUMERIC) AS unit_price
+    FROM fact_sales_order_line__source
+)
+SELECT 
+    sales_order_line_key
+    , sales_order_key
+    , product_key
+    , quantity
+    , unit_price
+FROM fact_sales_order_line__rename_recast
