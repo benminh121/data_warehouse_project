@@ -11,7 +11,7 @@ WITH dim_product__source AS(
     , CAST(stock_item_name AS STRING) AS product_name
     , CAST(brand AS STRING) AS brand_name
     , CAST(supplier_id AS INT) AS supplier_key
-    , CAST(is_chiller_stock AS BOOLEAN) AS is_chiller_stock
+    , CAST(is_chiller_stock AS BOOLEAN) AS is_chiller_stock_boolean
   FROM dim_product__source
 )
 
