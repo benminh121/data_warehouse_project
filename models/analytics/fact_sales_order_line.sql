@@ -12,10 +12,19 @@ WITH fact_sales_order_line__source AS (
         , CAST(unit_price AS NUMERIC) AS unit_price
     FROM fact_sales_order_line__source
 )
+
+, fact_sales_order_line__calculated_measure AS (
+    SELECT 
+        *
+        , quantity * unit_price AS gross_amount
+    FROM fact_sales_order_line__rename_recast
+)
+
 SELECT 
     sales_order_line_key
     , sales_order_key
     , product_key
     , quantity
     , unit_price
-FROM fact_sales_order_line__rename_recast
+    , gross_amount
+FROM fact_sales_order_line__calculated_measure
