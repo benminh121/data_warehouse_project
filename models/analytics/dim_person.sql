@@ -11,7 +11,18 @@ WITH dim_person__source AS(
   FROM dim_person__source
 )
 
+, dim_person__add_undefined AS (
+  SELECT
+    person_key
+    , full_name
+  FROM dim_person__rename_recast
+  UNION ALL
+  SELECT
+    0 AS person_key
+    , 'Undefined' AS full_name
+)
+
 SELECT
   person_key
   , full_name
-FROM dim_person__rename_recast
+FROM dim_person__add_undefined
