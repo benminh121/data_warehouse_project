@@ -11,7 +11,7 @@ WITH dim_person__source AS(
   FROM dim_person__source
 )
 
-, dim_person__add_undefined AS (
+, dim_person__add_undefined_record AS (
   SELECT
     person_key
     , full_name

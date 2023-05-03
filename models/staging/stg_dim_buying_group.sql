@@ -11,6 +11,22 @@ WITH dim_buying_group__source AS (
   FROM dim_buying_group__source
 )
 
+, dim_buying_group__add_undefined AS (
+  SELECT 
+    buying_group_key
+    , buying_group_name
+  FROM dim_buying_group__recast_rename
+
+  UNION ALL
+  SELECT
+    0 AS buying_group_key
+    , 'Undefined' buying_group_name
+  
+  UNION ALL
+  SELECT
+    -1 AS buying_group_key
+    , 'Invalid' AS buying_group_name
+)
 SELECT
   buying_group_key
   , buying_group_name
