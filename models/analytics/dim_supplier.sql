@@ -10,6 +10,23 @@ WITH dim_supplier__source AS (
   FROM dim_supplier__source
 )
 
+, dim_supplier__add_undefined AS (
+  SELECT
+    supplier_key
+    , supplier_name
+  FROM dim_supplier__rename_recast
+
+  UNION ALL
+  SELECT
+    0 AS supplier_key
+    , 'Undefined' AS supplier_name
+  
+  UNION ALL
+  SELECT
+    -1 AS supplier_key
+    , 'Invalid' AS supplier_name
+)
+
 SELECT
   supplier_key
   , supplier_name
