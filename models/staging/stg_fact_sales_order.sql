@@ -9,6 +9,7 @@ WITH stg_fact_sales_order__source AS (
     CAST(order_id AS INT) AS sales_order_key
     , CAST(customer_id AS INT) AS customer_key
     , CAST(picked_by_person_id AS INT) AS picked_by_person_key
+    , CAST(order_date AS DATE) AS order_date
   FROM stg_fact_sales_order__source
 )
 
@@ -16,4 +17,5 @@ SELECT
   sales_order_key
   , customer_key
   , coalesce(picked_by_person_key, 0) as picked_by_person_key
+  , order_date
 FROM stg_fact_sales_order__rename_recast

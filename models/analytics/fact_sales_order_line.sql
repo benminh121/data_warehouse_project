@@ -26,6 +26,7 @@ SELECT
     , fact_line.product_key
     , coalesce(fact_header.customer_key, -1) as customer_key
     , coalesce(fact_header.picked_by_person_key, -1) as picked_by_person_key
+    , fact_header.order_date
     , fact_line.quantity
     , fact_line.unit_price
     , fact_line.gross_amount
