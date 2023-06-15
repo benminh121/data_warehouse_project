@@ -133,7 +133,6 @@ SELECT
   , dim_product.quantity_per_outer
   , dim_product.supplier_key
   , coalesce(dim_supplier.supplier_name, 'Invalid') AS supplier_name 
-  , dim_supplier.payment_days AS payment_days
   , coalesce(dim_supplier.supplier_category_key, -1) AS supplier_category_key
   , coalesce(dim_supplier.supplier_category_name, 'Invalid') AS supplier_category_name
   , coalesce(dim_supplier.primary_contact_person_key, -1) AS primary_contact_person_key
@@ -147,23 +146,12 @@ SELECT
   , coalesce(dim_supplier.state_province_key, -1) AS delivery_state_province_key
   , coalesce(dim_supplier.state_province_name, 'Invalid') AS delivery_state_province_name
   , coalesce(dim_supplier.sales_territory, 'Invalid') AS delivery_sales_territory
-  , coalesce(dim_supplier.country_key, -1) AS delivery_country_key
-  , coalesce(dim_supplier.country_name, 'Invalid') AS delivery_country_name
-  , coalesce(dim_supplier.country_type, 'Invalid') AS delivery_country_type
-  , coalesce(dim_supplier.continent_name, 'Invalid') AS delivery_continent_name
-  , coalesce(dim_supplier.region_name, 'Invalid') AS delivery_region_name
-  , coalesce(dim_supplier.subregion_name, 'Invalid') AS delivery_subregion_name
   , dim_product.color_key
   , coalesce(dim_color.color_name, 'Invalid') AS color_name
   , dim_product.unit_package_type_key
   , coalesce(dim_package_type_unit.package_type_name, 'Invalid') AS unit_package_type_name
   , dim_product.outer_package_type_key
   , coalesce(dim_package_type_outer.package_type_name, 'Invalid') AS outer_package_type_name
-  , coalesce(dim_external_product.category_key, -1) AS category_key
-  , coalesce(dim_product_category.category_name, 'Invalid') AS category_name
-  , coalesce(dim_product_category.parent_category_key, -1) AS parent_category_key
-  , coalesce(dim_parent_category.category_name, 'Invalid') AS parent_category_name
-  , coalesce(dim_product_category.category_level, -1) AS category_level
 FROM dim_product__add_undefined_record AS dim_product
 
 LEFT JOIN {{ ref('dim_supplier') }} AS dim_supplier
@@ -177,12 +165,3 @@ LEFT JOIN {{ ref('dim_package_type') }} AS dim_package_type_unit
 
 LEFT JOIN {{ ref('dim_package_type') }} AS dim_package_type_outer
   ON dim_product.outer_package_type_key = dim_package_type_outer.package_type_key
-
-LEFT JOIN {{ ref ('stg_dim_external_product') }} AS dim_external_product
-  ON dim_product.product_key = dim_external_product.product_key
-
-LEFT JOIN {{ ref('dim_category') }} AS dim_product_category
-  ON dim_external_product.category_key = dim_product_category.category_key
-
-LEFT JOIN {{ ref('dim_category') }} AS dim_parent_category
-  ON dim_product_category.parent_category_key = dim_parent_category.category_key
