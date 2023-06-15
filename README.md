@@ -19,6 +19,7 @@ You can find data quality tests inside the `yml` files at [`models/analytics`](m
 ## Modules that I implemented
 
 - Sales Orders
+  - [Diagrams](https://drawsql.app/teams/bens/diagrams/vitdata)
 - Purchase Orders
 
 ## More info
