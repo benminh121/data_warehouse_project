@@ -18,7 +18,7 @@ WITH dim_person__source AS(
   SELECT
     person_key
     , full_name
-    , coalesce(preferred_name, 'Undefined') AS preferred_name
+    , preferred_name
     , CASE
         WHEN is_employee_boolean IS TRUE THEN 'Employee'
         WHEN is_employee_boolean IS FALSE THEN 'Not Employee'
@@ -63,7 +63,7 @@ WITH dim_person__source AS(
 SELECT
     person_key
   , full_name
-  , preferred_name
+  , coalesce(preferred_name, 'Undefined') AS preferred_name
   , is_employee
   , is_salesperson
 FROM dim_person__add_undefined_record
