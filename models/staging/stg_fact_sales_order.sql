@@ -32,7 +32,7 @@ WITH stg_fact_sales_order__source AS (
   FROM stg_fact_sales_order__rename_recast
 )
 
-, stg_fact_sales_order__add_undefined AS (
+, stg_fact_sales_order__add_undefined_record AS (
   SELECT
     sales_order_key
     , customer_purchase_order_number
@@ -82,4 +82,4 @@ SELECT
   , order_date
   , expected_delivery_date
   , order_picking_completed_when
-FROM stg_fact_sales_order__add_undefined
+FROM stg_fact_sales_order__add_undefined_record
