@@ -44,7 +44,7 @@ SELECT
     fact_order_line.sales_order_line_key
     , fact_order_line.sales_order_key
     , fact_order_line.product_key
-    , coalesce(dim_customer.customer_key, -1) AS customer_key
+    , coalesce(fact_order.customer_key, -1) AS customer_key
     , coalesce(fact_order.picked_by_person_key, -1) AS picked_by_person_key
     , coalesce(fact_order.salesperson_person_key, -1) AS salesperson_person_key
     , coalesce(fact_order.contact_person_key, -1) AS contact_person_key
@@ -62,5 +62,3 @@ SELECT
 FROM fact_sales_order_line__calculated_measure AS fact_order_line
 LEFT JOIN {{ ref('stg_fact_sales_order') }} AS fact_order
     ON fact_order_line.sales_order_key = fact_order.sales_order_key
-LEFT JOIN {{ ref("dim_customer") }} AS dim_customer
-    ON fact_order.customer_key = dim_customer.customer_key
