@@ -13,8 +13,7 @@ profile: 'wide_world_importers_dbt'
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
 model-paths: [
-  "models", 
-  ".tests_by_vit"
+  "models"
 ]
 test-paths: ["tests"]
 
