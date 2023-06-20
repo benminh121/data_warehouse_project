@@ -11,7 +11,7 @@ WITH dim_customer_category__source AS(
   FROM dim_customer_category__source
 )
 
-, dim_customer_category__add_undefined AS (
+, dim_customer_category__add_undefined_record AS (
   SELECT
     customer_category_key
     , customer_category_name
@@ -31,4 +31,4 @@ WITH dim_customer_category__source AS(
 SELECT
   customer_category_key
   , customer_category_name
-FROM dim_customer_category__rename_recast
+FROM dim_customer_category__add_undefined_record
