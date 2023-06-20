@@ -44,6 +44,7 @@ WITH dim_person__source AS(
   FROM dim_person__convert_boolean
   
   UNION ALL
+  
   SELECT
     0 AS person_key
     , 'Undefined' AS full_name
@@ -52,6 +53,7 @@ WITH dim_person__source AS(
     , 'Undefined' AS is_salesperson
 
   UNION ALL
+
   SELECT
     -1 AS person_key
     , 'Invalid' AS full_name

@@ -18,11 +18,13 @@ WITH dim_package_type__source AS (
   FROM dim_package_type__recast_rename
 
   UNION ALL
+  
   SELECT
     0 AS package_type_key
     , 'Undefined' AS package_type_name
   
   UNION ALL
+
   SELECT
     -1 AS package_type_key
     , 'Invalid' AS package_type_name

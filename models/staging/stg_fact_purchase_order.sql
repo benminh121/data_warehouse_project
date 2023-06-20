@@ -52,6 +52,7 @@ WITH fact_purchase_order__source AS (
   FROM fact_purchase_order__handle_null
 
   UNION ALL
+
   SELECT
     0 AS purchase_order_key
     , 'Undefined' AS is_order_finalized
@@ -62,6 +63,7 @@ WITH fact_purchase_order__source AS (
     , NULL AS expected_delivery_date
 
   UNION ALL
+  
   SELECT
     -1 AS purchase_order_key
     , 'Invalid' AS is_order_finalized

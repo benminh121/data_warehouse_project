@@ -19,9 +19,9 @@ You can find data quality tests inside the `yml` files at [`models/analytics`](m
 ## Modules that I implemented
 
 - Sales Orders
-  - [Diagrams](https://drawsql.app/teams/bens/diagrams/vitdata)
 - Purchase Orders
 
+[Diagrams](https://drawsql.app/teams/bens/diagrams/vitdata)
 ## More info
 - Raw dataset: [Wide World Importers](https://learn.microsoft.com/en-us/sql/samples/wide-world-importers-what-is?view=sql-server-ver16)
 - Database: [BigQuery](https://cloud.google.com/bigquery)

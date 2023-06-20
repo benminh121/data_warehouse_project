@@ -60,5 +60,6 @@ SELECT
     , fact_order_line.picking_completed_when
     , fact_order.order_picking_completed_when
 FROM fact_sales_order_line__calculated_measure AS fact_order_line
+
 LEFT JOIN {{ ref('stg_fact_sales_order') }} AS fact_order
     ON fact_order_line.sales_order_key = fact_order.sales_order_key

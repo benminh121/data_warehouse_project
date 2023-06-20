@@ -49,6 +49,7 @@ WITH dim_city__source AS (
     , coalesce(dim_state_province.state_province_name, 'Invalid') AS state_province_name
     , coalesce(dim_state_province.sales_territory, 'Invalid') AS sales_territory
   FROM dim_city__add_undefined_record AS dim_city
+  
   LEFT JOIN {{ ref('stg_dim_state_province') }} AS dim_state_province
     ON dim_city.state_province_key = dim_state_province.state_province_key
   ORDER BY dim_city.city_key

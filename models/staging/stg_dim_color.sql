@@ -18,11 +18,13 @@ WITH dim_color__source AS (
   FROM dim_color__rename_recast
 
   UNION ALL
+  
   SELECT
     0 AS color_key
     , 'Undefined' AS color_name
   
   UNION ALL
+
   SELECT
     -1 AS color_key
     , 'Invalid' AS color_name

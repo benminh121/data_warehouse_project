@@ -18,11 +18,13 @@ WITH dim_delivery_method__source AS (
   FROM dim_delivery_method__rename_recast
 
   UNION ALL
+  
   SELECT
     0 AS delivery_method_key
     , 'Undefined' AS delivery_method_name
 
   UNION ALL
+
   SELECT
     -1 AS delivery_method_key
     , 'Invalid' AS delivery_method_name

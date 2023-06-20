@@ -18,11 +18,13 @@ WITH dim_supplier_category__source AS (
   FROM dim_supplier_category__rename_recast
   
   UNION ALL
+  
   SELECT
     0 AS supplier_category_key
     , 'Undefined' AS supplier_category_name
 
   UNION ALL
+
   SELECT
     -1 AS supplier_category_key
     , 'Invalid' AS supplier_category_name

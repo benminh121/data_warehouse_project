@@ -18,11 +18,13 @@ WITH dim_buying_group__source AS (
   FROM dim_buying_group__recast_rename
 
   UNION ALL
+  
   SELECT
     0 AS buying_group_key
     , 'Undefined' buying_group_name
   
   UNION ALL
+
   SELECT
     -1 AS buying_group_key
     , 'Invalid' AS buying_group_name

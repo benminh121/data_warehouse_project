@@ -69,5 +69,6 @@ SELECT
   , fact_header.order_date
   , fact_header.expected_delivery_date
 FROM fact_purchase_order_line__calculate_measure AS fact_line
+
 LEFT JOIN {{ ref('stg_fact_purchase_order') }} AS fact_header
   ON fact_line.purchase_order_key = fact_header.purchase_order_key
