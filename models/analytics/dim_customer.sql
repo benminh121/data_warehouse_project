@@ -129,9 +129,9 @@ SELECT
   , dim_customer.is_statement_sent
   , dim_customer.is_on_credit_hold
   , dim_customer.standard_discount_percentage
+  , dim_customer.credit_limit
   , dim_customer.payment_days
   , dim_customer.account_opened_date
-  , dim_customer.credit_limit
   , dim_customer.customer_category_key
   , coalesce(dim_customer_category.customer_category_name, 'Invalid') AS customer_category_name
   , dim_customer.buying_group_key
